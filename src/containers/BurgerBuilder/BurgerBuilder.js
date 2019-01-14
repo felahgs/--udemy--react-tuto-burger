@@ -18,6 +18,7 @@ const INGREDIENT_PRICES = {
 
 class BurgerBuilder extends Component { 
 
+    // Ingredients will be retrieved from backend
     state = {
         ingredients: null,
         totalPrice: 4,
