@@ -1,5 +1,15 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## External Libraries Used 
+
+<strong>axios</strong> Promise based HTTP client for the browser and node.js <br>
+npm install axios --save
+
+<strong>react router</strong> Declarative routing for React <br>
+npm install --save react-router react-router-dom
+
+<strong></strong> <br>
+
 ## Available Scripts
 
 In the project directory, you can run:
