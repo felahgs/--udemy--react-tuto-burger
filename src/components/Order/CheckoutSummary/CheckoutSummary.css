@@ -4,22 +4,18 @@
     margin: auto;
 }
 .Burger {
-    margin-left: -15%;
+    /* margin-left: -15%; */
 }
 
 @media (min-width: 600px) {
     .CheckoutSummary {
         width: 500px;
     }
-
-    .Burger {
-        /* margin-left:0; */
-    }
 }
 
 @media (min-height: 700px) and (min-width: 1000px) { 
     .Burger {
-        width: 700px;
+        width: 500px;
         height: 600px;
         margin-left: -95px;
     }
