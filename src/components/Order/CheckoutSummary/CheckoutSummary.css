@@ -13,6 +13,14 @@
     }
 
     .Burger {
-        margin-left:0;
+        /* margin-left:0; */
+    }
+}
+
+@media (min-height: 700px) and (min-width: 1000px) { 
+    .Burger {
+        width: 700px;
+        height: 600px;
+        margin-left: -95px;
     }
 }

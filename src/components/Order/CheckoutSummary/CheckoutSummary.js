@@ -10,7 +10,7 @@ const checkoutSummary = (props) => {
             <h1>We hope it tastes well!</h1>
             <div style={{width: '100%', margin: 'auto'}}>
                 <Burger 
-                    className={classes.fdsf}
+                    className={classes.Burger}
                     ingredients={props.ingredients}/>
             </div>
             <Button 
