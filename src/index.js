@@ -1,17 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
-import { createStore } from 'redux';
+import { Provider,} from 'react-redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 import { BrowserRouter } from 'react-router-dom';
+import thunk from 'redux-thunk';
 
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import burgerBuilderReducer from './Store/reducers/burgerBuilder';
 // import reducer from './Store/reducers/burgerBuilder';
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 // https://github.com/zalmoxisus/redux-devtools-extension
-const store = createStore(burgerBuilderReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+const store = createStore(burgerBuilderReducer, composeEnhancers(
+    applyMiddleware(thunk)
+));
 
 const app = (
     <Provider store={store}>
