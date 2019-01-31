@@ -51,7 +51,6 @@ class Checkout extends Component {
         return (
             <div>
                 {summary}
-
             </div>
         );
     }
@@ -59,7 +58,7 @@ class Checkout extends Component {
 
 const mapStateToProps = state => {
     return {
-        ings: state.ingredients,
+        ings: state.burgerBuilder.ingredients,
         // price: state.totalPrice
     }
 };

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Route, Redirect} from 'react-router-dom';
 
 import Button from '../../../components/UI/Button/Button';
 import Spinner from '../../../components/UI/Spinner/Spinner';
@@ -18,7 +19,7 @@ class ContactData extends Component {
                     type: 'text',
                     placeholder: 'Your Name'
                 },
-                value: '',
+                value: 'fastest',
                 validation: {
                     required: true
                 },
@@ -111,6 +112,8 @@ class ContactData extends Component {
         }
 
         this.props.onOrderBurger(order);
+        //return
+        return <Redirect to="/"/>;
         
     }
 
