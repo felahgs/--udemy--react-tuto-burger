@@ -11,23 +11,28 @@ export const purchaseBurgerSuccess = (id, orderData) => {
 
 export const purchaseBurgerFail = (error) => {
     return {
-        type: actionTypes.PURCHASE_BURGER_FAIL,
+        type: actionTypes.PURCHASE_BURGER_FAILED,
         error: error
     }
 }
 
-export const purchaseBurgerStart = (orderData) => {
+export const purchaseBurgerStart = () => {
+    return {
+        type: actionTypes.PURCHASE_BURGER_START
+    };
+}
+
+export const purchaseBurger = (orderData) => {
     return dispatch => {
-        return dispatch => {
-            axios.post('/orders.json', orderData)
-            .then(response => {
-                console.log(response)
-                dispatch(purchaseBurgerSuccess( response.data, orderData ) );
-            })
-            .catch(error => {
-                console.log(error)
-                dispatch(purchaseBurgerFail(error));
-            });
-        }
+        dispatch(purchaseBurgerStart());
+        axios.post('/orders.json', orderData)
+        .then(response => {
+            console.log(response)
+            dispatch(purchaseBurgerSuccess( response.data, orderData ) );
+        })
+        .catch(error => {
+            console.log(error)
+            dispatch(purchaseBurgerFail(error));
+        });
     };
 }
