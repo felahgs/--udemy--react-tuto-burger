@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 
 import CheckoutSummary from '../../components/Order/CheckoutSummary/CheckoutSummary';
 import ContactData from './ContactData/ContactData';
+import * as actions from '../../Store/actions/index';
 
 class Checkout extends Component {
     // state = { 
@@ -36,8 +37,10 @@ class Checkout extends Component {
     render () {
         let summary = <Redirect to="/"/>
         if (this.props.ings) {
+            const purchasedRedirect = this.props.purchased ? <Redirect to="/"/> : null;
             summary = (
                 <div>
+                    {purchasedRedirect}
                     <CheckoutSummary
                         ingredients={this.props.ings} 
                         checkoutCancelled={this.checkoutCancelledHandler}
@@ -59,9 +62,10 @@ class Checkout extends Component {
 const mapStateToProps = state => {
     return {
         ings: state.burgerBuilder.ingredients,
+        purchased: state.order.purchased
         // price: state.totalPrice
     }
 };
 
 //connect always take two parameters the mapState and the mapDispatch in that order
-export default connect(mapStateToProps, null)(Checkout);
+export default connect(mapStateToProps)(Checkout);
