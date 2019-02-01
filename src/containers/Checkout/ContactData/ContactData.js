@@ -19,7 +19,7 @@ class ContactData extends Component {
                     type: 'text',
                     placeholder: 'Your Name'
                 },
-                value: 'fastest',
+                value: '',
                 validation: {
                     required: true
                 },
