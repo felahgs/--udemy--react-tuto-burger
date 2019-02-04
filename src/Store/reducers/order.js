@@ -1,5 +1,8 @@
 import * as actionTypes from '../actions/actionTypes';
 
+// Reducers are called by the actions and are responsible for editing 
+// the state of the order acording to the action
+// each reducer has it's on state
 const initialState = {
     orders: [],
     loading: false,
@@ -50,6 +53,21 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 loading: false
             };
+        case actionTypes.DELETE_ORDER_START:
+            return {
+                ...state,
+                loading: true
+            }
+        case actionTypes.DELETE_ORDER_SUCCESS:
+            return {
+                ...state,
+                loading: false
+            }
+        case actionTypes.DELETE_ORDER_FAIL:
+            return {
+                ...state,
+                loading: false
+            }
         default:
             return state;
     }

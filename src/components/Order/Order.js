@@ -1,5 +1,8 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import Button from '../UI/Button/Button';
 
+import * as actions from '../../Store/actions/index';
 import classes from './Order.css';
 
 const order = (props) => {
@@ -16,7 +19,6 @@ const order = (props) => {
         }
     };
 
-    console.log('ingredients', ingredients);
     const ingredientOutput = ingredients.map(ig => {
         return <span 
         style={{
@@ -32,9 +34,32 @@ const order = (props) => {
     return(
         <div className={classes.Order}>
             <p>Ingredients: {ingredientOutput}</p>
-            <p>Price: <strong>USD {Number.parseFloat(props.price).toFixed(2)}</strong></p>
+            <div
+                style={{
+                    display: "flex",
+                    justifyContent: "space-between"
+                }}>
+                <p>Price: <strong>USD {Number.parseFloat(props.price).toFixed(2)}</strong></p>
+                <Button 
+                    btnType="Danger"
+                    clicked={() => props.onDeleteOrders(props.id)}>DELETE</Button>
+            </div>
         </div>
     )
 };
 
-export default order;
+// export default order;
+
+const mapStateToProps = state => {
+    return {
+
+    };
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        onDeleteOrders: (id) => dispatch(actions.deleteOrders(id))
+    };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(order);

@@ -1,5 +1,9 @@
 import * as actionTypes from '../actions/actionTypes';
 
+
+// Reducers are called by the actions and are responsible for editing 
+// the state of the order acording to the action
+// each reducer has it's on state
 const initialState = {
     ingredients: null,
     totalPrice: 4,

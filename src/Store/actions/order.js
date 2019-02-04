@@ -1,6 +1,7 @@
 import * as actionTypes from './actionTypes';
 import axios from '../../axios-orders';
 
+// Actions are responsible for calling the reducers and communicating with the server.
 export const purchaseBurgerSuccess = (id, orderData) => {
     return {
         type: actionTypes.PURCHASE_BURGER_SUCCESS,
@@ -66,7 +67,7 @@ export const fetchOrdersStart = () => {
 export const fetchOrders = () => {
     return dispatch => {
         console.log('MOUNTED');
-        dispatch(fetchOrdersStart())
+        dispatch(fetchOrdersStart()) // Change state to loading until the end of the operation
         axios.get('/orders.json')
         .then(res => {
             const fetchedOrders = [];
@@ -84,4 +85,39 @@ export const fetchOrders = () => {
             dispatch(fetchOrdersFail());
         });
     }
+};
+
+export const deleteOrders = (id) => {
+    return dispatch => {
+        dispatch(deleteOrderStart())
+        axios.delete('/orders/' + id + '.json')
+        .then(response => {
+            console.log('DELETED')
+            dispatch(deleteOrderSuccess())
+            dispatch(fetchOrders())
+        })
+        .catch( err => {
+            console.log('NOT DELETED', err)
+            dispatch(deleteOrderFail(err))
+        });
+    }
+};
+export const deleteOrderSuccess = (orders) => {
+    return {
+        type: actionTypes.DELETE_ORDER_SUCCESS,
+        orders: orders
+    }
+};
+
+export const deleteOrderFail = (error) => {
+    return {
+        type: actionTypes.DELETE_ORDER_FAIL,
+        error: error
+    };
+};
+
+export const deleteOrderStart = () => {
+    return {
+        type: actionTypes.DELETE_ORDER_START
+    };
 };
