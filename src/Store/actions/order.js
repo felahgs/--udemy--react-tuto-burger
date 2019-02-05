@@ -82,6 +82,7 @@ export const fetchOrders = () => {
             this.setState({loading:false, orders: fetchedOrders});
         })
         .catch(err => {
+            console.log(err);
             dispatch(fetchOrdersFail());
         });
     }
