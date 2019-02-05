@@ -10,13 +10,15 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import burgerBuilderReducer from './Store/reducers/burgerBuilder';
 import orderReducer from './Store/reducers/order';
+import authReducer from './Store/reducers/auth';
 // import reducer from './Store/reducers/burgerBuilder';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const rootReducer = combineReducers({
     burgerBuilder: burgerBuilderReducer,
-    order: orderReducer
+    order: orderReducer,
+    auth: authReducer
 });
 
 // https://github.com/zalmoxisus/redux-devtools-extension
