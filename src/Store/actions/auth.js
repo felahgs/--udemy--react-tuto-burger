@@ -23,6 +23,15 @@ export const authFail = (error) => {
     };
 };
 
+export const logout = () => {
+    // localStorage.removeItem('token');
+    // localStorage.removeItem('expirationDate');
+    // localStorage.removeItem('userId');
+    return {
+        type: actionTypes.AUTH_LOGOUT
+    };
+};
+
 export const auth = (email, password, isSighnup) => {
     return dispatch => {
         dispatch(authStart());
