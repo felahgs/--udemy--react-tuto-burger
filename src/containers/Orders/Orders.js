@@ -11,7 +11,7 @@ class Orders extends Component {
 
 
     componentDidMount() {
-        this.props.onFetchOrders(this.props.token);
+        this.props.onFetchOrders(this.props.token, this.props.userId);
     }
 
     render () {
@@ -29,7 +29,7 @@ class Orders extends Component {
             }
 
             else {
-                orders =    this.props.orders.map(order => (
+                orders =  this.props.orders.map(order => (
                      <Order 
                          key={order.id}  
                          id={order.id}  
