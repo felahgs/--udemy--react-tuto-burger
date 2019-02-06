@@ -23,10 +23,10 @@ export const purchaseBurgerStart = () => {
     };
 }
 
-export const purchaseBurger = (orderData) => {
+export const purchaseBurger = ( orderData, token ) => {
     return dispatch => {
         dispatch(purchaseBurgerStart());
-        axios.post('/orders.json', orderData)
+        axios.post('/orders.json?auth=' + token, orderData)
         .then(response => {
             console.log(response)
             dispatch(purchaseBurgerSuccess( response.data.name, orderData ) );
@@ -64,11 +64,11 @@ export const fetchOrdersStart = () => {
     };
 };
 
-export const fetchOrders = () => {
+export const fetchOrders = (token) => {
     return dispatch => {
-        console.log('MOUNTED');
+        // console.log('MOUNTED');
         dispatch(fetchOrdersStart()) // Change state to loading until the end of the operation
-        axios.get('/orders.json')
+        axios.get('/orders.json?auth=' + token)
         .then(res => {
             const fetchedOrders = [];
             for (let key in res.data){
@@ -79,10 +79,10 @@ export const fetchOrders = () => {
             }
             console.log(res.data);
             dispatch(fetchOrdersSuccess(fetchedOrders));
-            this.setState({loading:false, orders: fetchedOrders});
+            // this.setState({loading:false, orders: fetchedOrders});
         })
         .catch(err => {
-            console.log(err);
+            console.log('fetchfail', err);
             dispatch(fetchOrdersFail());
         });
     }
@@ -93,12 +93,12 @@ export const deleteOrders = (id) => {
         dispatch(deleteOrderStart())
         axios.delete('/orders/' + id + '.json')
         .then(response => {
-            console.log('DELETED')
+            // console.log('DELETED')
             dispatch(deleteOrderSuccess())
             dispatch(fetchOrders())
         })
         .catch( err => {
-            console.log('NOT DELETED', err)
+            // console.log('NOT DELETED', err)
             dispatch(deleteOrderFail(err))
         });
     }

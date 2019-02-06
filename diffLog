@@ -1,0 +1,28 @@
+diff --git a/src/components/Navigation/NavigationItems/NavigationItems.js b/src/components/Navigation/NavigationItems/NavigationItems.js
+index ddfc35d..7c961cf 100644
+--- a/src/components/Navigation/NavigationItems/NavigationItems.js
++++ b/src/components/Navigation/NavigationItems/NavigationItems.js
+@@ -3,13 +3,14 @@ import React from 'react';
+ import classes from './NavigationItems.css';
+ import NavigationItem from './NavigationItem/NavigationItem';
+ 
+-const navigationItems = () => (
+-    <ul className={classes.NavigationItems} >
+-        <NavigationItem link="/" exact>Burger Builder</NavigationItem>
+-        <NavigationItem link="/orders">Orders</NavigationItem>
+-        <NavigationItem link="/auth">Authenticate</NavigationItem>
+-    </ul>
+-
+-);
++const navigationItems = () => {
++        return (
++        <ul className={classes.NavigationItems} >
++            <NavigationItem link="/" exact>Burger Builder</NavigationItem>
++            <NavigationItem link="/orders">Orders</NavigationItem>
++            <NavigationItem link="/auth">Authenticate</NavigationItem>
++        </ul>
++        )
++    }
+ 
+ export default navigationItems;
+\ No newline at end of file
