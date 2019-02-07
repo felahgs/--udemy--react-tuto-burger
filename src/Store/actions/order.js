@@ -64,11 +64,16 @@ export const fetchOrdersStart = () => {
     };
 };
 
-export const fetchOrders = (token) => {
+export const fetchOrders = (token, userId) => {
     return dispatch => {
         // console.log('MOUNTED');
         dispatch(fetchOrdersStart()) // Change state to loading until the end of the operation
-        axios.get('/orders.json?auth=' + token)
+        // orderBy is a key parameter understood by firebase
+        // userId should be passed as a string is also necessary to add ".indexOn": ["userId"] to firebase rules
+        console.log("userId",userId);
+        const queryParams = '?auth=' + token + '&orderBy="userId"&equalTo="' + userId + '"';
+        // axios.get('/orders.json?auth=' + token)
+        axios.get('/orders.json' + queryParams )
         .then(res => {
             const fetchedOrders = [];
             for (let key in res.data){
