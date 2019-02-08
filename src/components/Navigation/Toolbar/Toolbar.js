@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import { withRouter } from "react-router";
 
 import classes from './Toolbar.css';
 import Logo from '../../Logo/Logo';
@@ -8,7 +10,7 @@ import DrawerToggle from '../SideDrawer/DrawerToggle/DrawerToggle';
 const toolbar = (props) => (
     <header className={classes.Toolbar}>
         <DrawerToggle clicked={props.drawerToggleClicked} />
-        <div className={classes.Logo}>
+        <div className={classes.Logo} onClick={ () => props.history.push("/") }>
             <Logo />
         </div>
         <nav className={classes.DesktopOnly}>
@@ -17,4 +19,4 @@ const toolbar = (props) => (
     </header>
 );
 
-export default toolbar
+export default withRouter(toolbar)

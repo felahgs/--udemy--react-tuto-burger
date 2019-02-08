@@ -28,11 +28,11 @@ export const purchaseBurger = ( orderData, token ) => {
         dispatch(purchaseBurgerStart());
         axios.post('/orders.json?auth=' + token, orderData)
         .then(response => {
-            console.log(response)
+            // console.log(response)
             dispatch(purchaseBurgerSuccess( response.data.name, orderData ) );
         })
         .catch(error => {
-            console.log(error)
+            // console.log(error)
             dispatch(purchaseBurgerFail(error));
         });
     };
@@ -70,7 +70,7 @@ export const fetchOrders = (token, userId) => {
         dispatch(fetchOrdersStart()) // Change state to loading until the end of the operation
         // orderBy is a key parameter understood by firebase
         // userId should be passed as a string is also necessary to add ".indexOn": ["userId"] to firebase rules
-        console.log("userId",userId);
+        // console.log("userId",userId);
         const queryParams = '?auth=' + token + '&orderBy="userId"&equalTo="' + userId + '"';
         // axios.get('/orders.json?auth=' + token)
         axios.get('/orders.json' + queryParams )
@@ -87,7 +87,7 @@ export const fetchOrders = (token, userId) => {
             // this.setState({loading:false, orders: fetchedOrders});
         })
         .catch(err => {
-            console.log('fetchfail', err);
+            // console.log('fetchfail', err);
             dispatch(fetchOrdersFail());
         });
     }
