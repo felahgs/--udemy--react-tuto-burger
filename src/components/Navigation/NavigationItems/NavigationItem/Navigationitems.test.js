@@ -24,9 +24,12 @@ describe('<NavigationItems />', () => {
         wrapper.setProps({isAuthenticated: true});
         expect(wrapper.find(NavigationItem)).toHaveLength(3);
     });
+<<<<<<< HEAD
 
     it('should render one <NavigationItem /> elements with a link to "/logout"', () => {
         wrapper.setProps({isAuthenticated: true});
         expect(wrapper.contains( <NavigationItem link="/logout">Logout</NavigationItem> )).toEqual(true);
     });
+=======
+>>>>>>> 45af9aa918cfcbefab785c19cc1238e8c3652266
 });
